@@ -1,0 +1,40 @@
+<div class="">
+    <form  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="userId">User Id</label>
+                <input class="form-control" type="text" id="userId" name="userId" formControlName="userId" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="accountNo">Account No</label>
+                <input class="form-control" type="text" id="accountNo" name="accountNo" formControlName="accountNo" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" formControlName="name" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="date">Date</label>
+                <input class="form-control" type="text" id="date" name="date" formControlName="date" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="deposit">Deposit</label>
+                <input class="form-control" type="text" id="deposit" name="deposit" formControlName="deposit" #newDeposit (keyup)="keyupDeposit(newDeposit.value)" [disabled]="true">
+            </div>
+            <div class="form-group col-6">
+                <label for="withdraw">Withdraw</label>
+                <input class="form-control" type="text" id="withdraw" name="withdraw" formControlName="withdraw" #newWidthdraw (keyup)="keyupWithdraw(newWidthdraw.value)" [disabled]="isWithDisabled">
+                <div class="" *ngIf="!disWithdraw" style="color:red">Please Enter Valid Input <b>Withdraw is Greater Than Balance</b></div>
+            </div>
+            <div class="form-group col-6">
+                <label for="balance">Balance</label>
+                <input class="form-control" type="number" id="balance" name="balance" formControlName="balance" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="location" formControlName="location">
+            </div>
+        </div>
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="!signUpForm.valid">Submit Profile</button>
+    </form>
+</div>

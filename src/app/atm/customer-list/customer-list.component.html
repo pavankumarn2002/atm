@@ -1,0 +1,28 @@
+<div class="">
+    <div class="col-4">
+        <input type="text" class="form-control mt-4" [(ngModel)]="filterData" placeholder="1393-6785-4564-1237"/>
+    </div>
+    <table class="table table-stipped mt-4">
+        <thead>
+            <tr>
+                <th>S No</th>
+                <th>Account No</th>
+                <th>Date</th>
+                <th>Balance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of customerData | filter:filterData;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{data.accountNo}}</td>
+                <td>{{data.date}}</td>
+                <td>{{data.balance}}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/atm/',data.id]">Transaction</button>
+                    <button class="btn btn-danger" (click)="deleteAccount(data.id)" [disabled]="check">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
